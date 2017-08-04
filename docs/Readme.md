@@ -47,3 +47,24 @@ below a global description of each.
 ### Kast Client Schema
 
 ![KastClientSchema](https://github.com/Kalyzee/kast-client-js/blob/master/docs/img/KastClient_Schema.png)
+
+
+You can see in the above schema the simplest way to execute an action and/or receive a return or a message with **KastClient**.
+
+To start using **KastClient** and all modules it offers, you have to instanciate `KastClient` :
+
+    let kws = new KastClient(url)
+
+`KastClient` connect and create a socket with the server url you mentionned and give you an access to all the features of your KastBox.
+
+**Example :**
+
+    let kws = new KastClient(url)
+    
+    kws.camera.up() // Execute an action to direct your camera up
+    kws.camera.down() // Execute an action to direct your camera down
+
+    kws.video.startRecordAction() // Execute an action to start recording
+
+
+
