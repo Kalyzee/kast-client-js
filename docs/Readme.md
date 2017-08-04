@@ -42,3 +42,8 @@ below a global description of each.
 | Network         | Manage Network Configuration (Uploading VOD / Live features  )         | NETWORK_MGMT   |  
 | Update          | Manage Update                                                          | UPDATE_MGMT    |  
 | System          | Get System Information                                                 | MONITOR_MGMT   |  
+
+
+### Kast Client Schema
+
+![KastClientSchema](https://github.com/Kalyzee/kast-client-js/blob/master/docs/img/KastClient_Schema.png)
