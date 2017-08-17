@@ -12,9 +12,9 @@ let System = require('./src/kast_modules/system')
 let Context = require('./src/kast_modules/context')
 
 
-module.exports = function (url) {
+module.exports = function (url, websocket) {
 
-    this.socket = new socket.KastWebSocket(url)
+    this.socket = new socket.KastWebSocket(url, websocket)
 
     this.camera = new Camera(this.socket)
     this.mixer = new Mixer(this.socket)
