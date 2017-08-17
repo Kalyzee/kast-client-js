@@ -13,6 +13,7 @@
         var _this = this;
         _this.url = typeof url !== 'undefined' ? url : 'ws://localhost:8000';
         _this.client = new WebSocket(_this.url);
+        console.log(_this.client.readyState)
         _this.events = {};
         _this.waitActionList = [];
 
@@ -89,12 +90,13 @@
         };
 
 
-        _this.client.on('open', () => {
+        _this.client.onopen = () => {
+            console.log('test')
             _this.waitActionList.forEach(function (action) {
                 _this.send(action.route, action.data)
             })
             delete _this.waitActionList
-        });
+        };
     };
 
     module.exports.KastWebSocket = KastWebSocket;
