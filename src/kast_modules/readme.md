@@ -95,16 +95,18 @@
 
 # Mixer
 
-| Function             | Parameter  | Description |
-|----------------------|------------|-------------|
-|`get()`               |-           |             |
-|`getCurrent()`        |-           |             |
-|`set()`               |-           |             |
-|`remove()`            |-           |             |
-|`get()`               |-           |             |
-|`getCurrent()`        |-           |             |
-|`set()`               |-           |             |
-|`remove()`            |-           |             |
+| Function                      | Parameter type  | Return type value  | Description |
+|-------------------------------|-----------------|--------------------|-------------|
+|`switchScene(`*scene_id*`)`    |Int              |                    |             |
+|`setAlphaRGB(`*r, g, b*`)   `  |Int              |                    |              
+|`getAlphaRGB()`                |-                |                    |
+|`onGetAlphaRGB(`*Callback*`)`  |Callback         |Array[Int, Int, Int]|
+|`setAlphaAngle(`*angle*`)`     |Float            |                    |
+|`getAlphaAngle()`              |-                |                    |
+|`onGetAlphaAngle(`*Callback*`)`|-                |Float               |
+|`setAlphaBW(`*black, white*`)` |Int              |                    |
+|`getAlphaBW()`                 |-                |                    |
+|`onGetAlphaBW(`*Callback*`)`   |                 |Array[Int, Int]     |             
 
 # Network
 

@@ -3,8 +3,6 @@ let Kast = require('./kastClient')
 
 let kast = new Kast('ws://localhost:8000')
 
-kast.video.startRecord()
-kast.video.list()
 
 
     kast.video.onList((list) => {
@@ -28,5 +26,17 @@ kast.video.list()
     })
 
     kast.update.onCheckupdate((message) => {
+        console.log(message)
+    })
+    
+    kast.mixer.onGetAlphaRGB((message) => {
+        console.log((message[0]))
+    })
+
+    kast.mixer.onGetAlphaAngle((message) => {
+        console.log(typeof(message))
+    })
+
+    kast.mixer.onGetAlphaBW((message) => {
         console.log(message)
     })

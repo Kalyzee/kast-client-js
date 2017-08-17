@@ -1,7 +1,7 @@
-(function() {
+(function () {
 
-    module.exports = function(socket) {
-        
+    module.exports = function (socket) {
+
         this.socket = socket
 
         this.onGetAlphaRGB = (callback) => {
@@ -23,15 +23,15 @@
         }
 
         this.switchScene = (scene_id) => {
-            this.socket.send("mixer/switch_scene", {"scene_id": scene_id})
+            this.socket.send("mixer/switch_scene", { "scene_id": scene_id })
         }
 
         this.getAlphaRGB = () => {
-            this.socket.send("mixer/get_alpha_rgb", {"r": r, "g": g, "b": b})
+            this.socket.send("mixer/get_alpha_rgb")
         }
 
         this.setAlphaRGB = (r, g, b) => {
-            this.socket.send("mixer/set_alpha_rgb")
+            this.socket.send("mixer/set_alpha_rgb", { "r": r, "g": g, "b": b })
         }
 
         this.getAlphaAngle = () => {
@@ -39,7 +39,7 @@
         }
 
         this.setAlphaAngle = (angle) => {
-            this.socket.send("mixer/set_alpha_angle", {"angle": angle} )
+            this.socket.send("mixer/set_alpha_angle", { "angle": angle })
         }
 
         this.getAlphaBW = () => {
@@ -47,7 +47,7 @@
         }
 
         this.setAlphaBW = (black, white) => {
-            this.socket.send("mixer/set_alpha_bw", {"black": black, "white": white})
+            this.socket.send("mixer/set_alpha_bw", { "black": black, "white": white })
         }
     }
 })()
