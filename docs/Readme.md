@@ -59,12 +59,16 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 **Example :**
 
-    let kws = new KastClient(url)
+    let kast = new KastClient(url)
     
-    kws.camera.up() // Execute an action to direct your camera up
-    kws.camera.down() // Execute an action to direct your camera down
+    kast.camera.up() // Execute an action to direct your camera up
+    kast.camera.down() // Execute an action to direct your camera down
 
-    kws.video.startRecordAction() // Execute an action to start recording
+    kast.video.getList() // Send a request to get the list video
+
+    kast.video.onGetList((list) => {
+
+    })
 
 
 

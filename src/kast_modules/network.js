@@ -10,12 +10,12 @@
             })
         }
 
-        this.get = () => {
+        this.getInfo = () => {
             this.socket.send("network/get")
         }
 
-        this.set = () => {
-            this.socket.send("network/set")
+        this.setInfo = (networkInfo) => {
+            this.socket.send("network/set", networkInfo)
         }
 
         this.restart = () => {

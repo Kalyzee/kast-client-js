@@ -4,7 +4,7 @@
 
         this.socket = socket
 
-        this.onList = (callback) => {
+        this.onGetList = (callback) => {
             this.socket.register("video/list", (list) => {
                 callback(list)
             })
@@ -16,7 +16,7 @@
             })
         }
 
-        this.list = () => {
+        this.getList = () => {
             this.socket.send("video/list")
         }
 
@@ -24,8 +24,8 @@
             this.socket.send("video/remove", id)
         }
 
-        this.update = () => {
-            this.socket.send("video/update")
+        this.update = (id, title) => {
+            this.socket.send("video/update", {"id": id, "title": title})
         }
         
         this.startRecord = () => {

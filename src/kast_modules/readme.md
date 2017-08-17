@@ -2,24 +2,24 @@
 
 **This class is used to execute actions on the camera**
 
-| Function                 | Parameter  | Description |
-|--------------------------|------------|-------------|
-|`zoomIn()`                |-           |             |
-|`zoomOut()`               |-           |             |
-|`zoomStop()`              |-           |             |
-|`up()`                    |-           |             |
-|`down()`                  |-           |             |
-|`left()`                  |-           |             |
-|`right()`                 |-           |             |
-|`startUp()`               |-           |             |
-|`startDown()`             |-           |             |
-|`startLeft()`             |-           |             |
-|`startRight()`            |-           |             |
-|`stop()`                  |-           |             |
-|`bigUp()`                 |-           |             |
-|`bigDown()`               |-           |             |
-|`bigLeft()`               |-           |             |
-|`bigRight()`              |-           |             |
+| Function                      | Parameter type  | Return type value  | Description |
+|-------------------------------|-----------------|--------------------|-------------|
+|`zoomIn()`                     |-                |             |
+|`zoomOut()`                    |-                |             |
+|`zoomStop()`                   |-                |             |
+|`up()`                         |-                |             |
+|`down()`                       |-                |             |
+|`left()`                       |-                |             |
+|`right()`                      |-                |             |
+|`startUp()`                    |-                |             |
+|`startDown()`                  |-           |             |
+|`startLeft()`                  |-           |             |
+|`startRight()`                 |-           |             |
+|`stop()`                       |-           |             |
+|`bigUp()`                      |-           |             |
+|`bigDown()`                    |-           |             |
+|`bigLeft()`                    |-           |             |
+|`bigRight()`                   |-           |             |
 |`setSpeakerView()`        |-           |             |
 |`goToSpeakerView()`       |-           |             |
 |`setFullView()`           |-           |             |
@@ -54,17 +54,17 @@
 
 # Video
 
-| Function              | Parameter  | Description |
-|-----------------------|------------|-------------|
-|`List()`               |-           |             |
-|`onList()`             |-           |             |
-|`remove()`             |-           |             |
-|`update()`             |-           |             |
-|`startRecord()`        |-           |             |
-|`stopRecord()`         |-           |             |
-|`currentSession()`     |-           |             |
-|`setSessionTitle()`    |-           |             |
-|`setSessionSpeaker()`  |-           |             |
+| Function                      | Parameter type  | Return type value  | Description |
+|-------------------------------|-----------------|--------------------|-------------|
+|`getList()`                    |-                |             |
+|`onGetList(`*Callback*`)`         |Callback function|JSON         |
+|`remove(`*id*`)`               |Int              |             |
+|`update(`*id, title*`)`        |Int, String      |             |
+|`startRecord()`                |-                |             |
+|`stopRecord()`                 |-                |             |
+|`currentSession()`             |-                |Object         |
+|`setSessionTitle()`            |-                |             |
+|`setSessionSpeaker()`          |-                |             |
 
 # Background
 
@@ -98,22 +98,22 @@
 | Function                      | Parameter type  | Return type value  | Description |
 |-------------------------------|-----------------|--------------------|-------------|
 |`switchScene(`*scene_id*`)`    |Int              |                    |             |
-|`setAlphaRGB(`*r, g, b*`)   `  |Int              |                    |              
+|`setAlphaRGB(`*r, g, b*`)   `  |Int              |                    |                
 |`getAlphaRGB()`                |-                |                    |
-|`onGetAlphaRGB(`*Callback*`)`  |Callback         |Array[Int, Int, Int]|
+|`onGetAlphaRGB(`*Callback*`)`  |Callback function|Array[Int, Int, Int]|
 |`setAlphaAngle(`*angle*`)`     |Float            |                    |
 |`getAlphaAngle()`              |-                |                    |
-|`onGetAlphaAngle(`*Callback*`)`|-                |Float               |
+|`onGetAlphaAngle(`*Callback*`)`|Callback function|Float               |
 |`setAlphaBW(`*black, white*`)` |Int              |                    |
 |`getAlphaBW()`                 |-                |                    |
-|`onGetAlphaBW(`*Callback*`)`   |                 |Array[Int, Int]     |             
+|`onGetAlphaBW(`*Callback*`)`   |Callback function|Array[Int, Int]     |             
 
 # Network
 
 | Function      | Parameter  | Description |
 |---------------|------------|-------------|
-|`get()`        |-           |             |
-|`set()`        |-           |             |
+|`getInfo()`        |-           |             |
+|`setInfo()`        |-           |             |
 |`restart()`    |-           |             |
 |`onUpdated()`  |-           |             |
 
@@ -145,3 +145,9 @@
 |`copyVideo()`         |-           |             |
 |`copyTemplate()`      |-           |             |
 |`copyBackground()`    |-           |             |
+
+# Context
+
+| Function             | Parameter  | Description |
+|----------------------|------------|-------------|
+|`onUpdated(`*Callback*`)`        |-           |             |
