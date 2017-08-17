@@ -3,9 +3,6 @@
     /**
     *
     */
-    if (typeof (WebSocket) === "undefined") {
-        var WebSocket = require('ws');
-    }
 
     var KastWebSocket = function (url) {
 
@@ -14,7 +11,6 @@
         _this.client = new WebSocket(_this.url);
         _this.events = {};
         _this.waitActionList = [];
-
 
         _this.client.onmessage = function (event) {
             /**
