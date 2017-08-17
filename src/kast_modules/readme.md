@@ -54,17 +54,18 @@
 
 # Video
 
-| Function                      | Parameter type  | Return type value  | Description |
-|-------------------------------|-----------------|--------------------|-------------|
-|`getList()`                    |-                |             |
-|`onGetList(`*Callback*`)`         |Callback function|JSON         |
-|`remove(`*id*`)`               |Int              |             |
-|`update(`*id, title*`)`        |Int, String      |             |
-|`startRecord()`                |-                |             |
-|`stopRecord()`                 |-                |             |
-|`currentSession()`             |-                |Object         |
-|`setSessionTitle()`            |-                |             |
-|`setSessionSpeaker()`          |-                |             |
+| Function                       | Parameter type  | Return type value  | Description |
+|--------------------------------|-----------------|--------------------|-------------|
+|`getList()`                     |-                |             |
+|`onGetList(`*callback*`)`       |Callback function|JSON         |
+|`remove(`*id*`)`                |Int              |             |
+|`update(`*id, title*`)`         |Int, String      |             |
+|`startRecord()`                 |-                |             |
+|`stopRecord()`                  |-                |             |
+|`currentSession()`              |-                |Object       |
+|`onCurrentSession(`*callback*`)`|Callback function|Object       |
+|`setSessionTitle()`             |-                |             |
+|`setSessionSpeaker()`           |-                |             |
 
 # Background
 
