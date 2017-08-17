@@ -1,10 +1,3 @@
-# Socket
-
-| Function                 | Parameter | Description |
-|--------------------------|-----------|-------------|
-|`onOpen()`                |-           |             |
-
-
 # Camera
 
 **This class is used to execute actions on the camera**
