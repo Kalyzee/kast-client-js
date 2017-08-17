@@ -67,7 +67,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
     kast.video.getList() // Send a request to get the list video
 
     kast.video.onGetList((list) => {
-
+        // you receive the video list in variable list
     })
 
 
