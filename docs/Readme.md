@@ -70,5 +70,3 @@ To start using **KastClient** and all modules it offers, you have to instanciate
         // you receive the video list in variable list
     })
 
-
-
