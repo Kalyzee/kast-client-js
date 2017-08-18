@@ -248,6 +248,6 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Context <a id="context"></a>
 
-| Function             | Parameter  | Description |
-|----------------------|------------|-------------|
-|`onUpdated(`*Callback*`)`        |-           |             |
+| Function                      | Parameter type  | Return type value  | Description |
+|-------------------------------|-----------------|--------------------|-------------|
+|`onUpdated(`*Callback()*`)`    |Callback function|Object                    |
