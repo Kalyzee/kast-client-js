@@ -91,7 +91,6 @@
 
 
         _this.client.onopen = () => {
-            console.log('test')
             _this.waitActionList.forEach(function (action) {
                 _this.send(action.route, action.data)
             })
