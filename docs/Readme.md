@@ -10,7 +10,6 @@
     *   [Audio](#audio)
     *   [Video](#video)
     *   [Background](#background)
-    *   [Context](#context)
     *   [Logo](#logo)
     *   [Mixer](#mixer)
     *   [Network](#network)
