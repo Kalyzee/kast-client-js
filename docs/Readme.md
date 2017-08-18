@@ -68,7 +68,7 @@ below a global description of each.
 
 ### Kast Client Schema<a id="schema"></a>
 
-![KastClientSchema](https://github.com/Kalyzee/kast-client-js/blob/master/docs/img/KastClient_Schema.png)
+![KastClientSchema](./img/KastClient_Schema.png)
 
 
 You can see in the above schema the simplest way to execute an action and/or receive a return or a message with **KastClient**.
