@@ -106,7 +106,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`zoomOut()`                   |Execute a zoom out
 |`zoomStop()`                  |Stop zoom action
 |`up()`                        |Direct the camera up
-|`down()`                      ||Direct the camera down
+|`down()`                      |Direct the camera down
 |`left()`                      |Direct the camera to the left
 |`right()`                     |Direct the camera to the right
 |`startUp()`                   |Direct the camera up and wait the `stop()` function to stop
@@ -189,13 +189,13 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`switchScene(`*int scene_id*`)`                    |
 |`setAlphaRGB(`*int r, int g, int b*`)`             |                
 |`getAlphaRGB()`                |-                  |                    
-|`onGetAlphaRGB(`*Callback(array[int, int, int])*`)`|
+|`onGetAlphaRGB(`*Callback(array[r int, g int, b int])*`)`|
 |`setAlphaAngle(`*Float angle*`)`                   |
 |`getAlphaAngle()`                                  |  
 |`onGetAlphaAngle(`*Callback(Float angle*`)`        |
 |`setAlphaBW(`*int black, int white*`)`             |
 |`getAlphaBW()`                                     |
-|`onGetAlphaBW(`*Callback(array[int, int])*`)`      |  
+|`onGetAlphaBW(`*Callback(array[int black, int white])*`)`      |  
 
 ## Network <a id="network"></a>
 
