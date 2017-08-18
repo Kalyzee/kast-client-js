@@ -30,12 +30,12 @@
             this.socket.send("logo/get_current")
         }
 
-        this.set = () => {
-            this.socket.send("logo/set")
+        this.set = (logo) => {
+            this.socket.send("logo/set", {"logo": logo})
         }
 
-        this.remove = () => {
-            this.socket.send("logo/remove")
+        this.remove = (logo) => {
+            this.socket.send("logo/remove", {"logo": logo })
         }
     }
 })()

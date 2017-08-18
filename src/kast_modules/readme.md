@@ -2,24 +2,24 @@
 
 **This class is used to execute actions on the camera**
 
-| Function                      | Parameter type  | Return type value  | Description |
-|-------------------------------|-----------------|--------------------|-------------|
-|`zoomIn()`                     |-                |             |
-|`zoomOut()`                    |-                |             |
-|`zoomStop()`                   |-                |             |
-|`up()`                         |-                |             |
-|`down()`                       |-                |             |
-|`left()`                       |-                |             |
-|`right()`                      |-                |             |
-|`startUp()`                    |-                |             |
-|`startDown()`                  |-           |             |
-|`startLeft()`                  |-           |             |
-|`startRight()`                 |-           |             |
-|`stop()`                       |-           |             |
-|`bigUp()`                      |-           |             |
-|`bigDown()`                    |-           |             |
-|`bigLeft()`                    |-           |             |
-|`bigRight()`                   |-           |             |
+| Function                      | Parameter type  | Return type  | Description |
+|-------------------------------|-----------------|----------------------------|-
+|`zoomIn()`                     |-                |              |Execute a zoom in
+|`zoomOut()`                    |-                |              |Execute a zoom out
+|`zoomStop()`                   |-                |              |Stop zoom action
+|`up()`                         |-                |              |Direct the camera up
+|`down()`                       |-                |              |Direct the camera down
+|`left()`                       |-                |              |Direct the camera to the left
+|`right()`                      |-                |              |Direct the camera to the right
+|`startUp()`                    |-                |              |Direct the camera up and wait the `stop()` function to stop
+|`startDown()`                  |-                |              |Direct the camera down and wait the `stop()` function to stop  
+|`startLeft()`                  |-                |              |Direct the camera to the left and wait the `stop()` function to stop
+|`startRight()`                 |-                |              |Direct the camera to the right and wait the `stop()` function to stop
+|`stop()`                       |-                |              |Stop direct actions on camera (`startUp()`, `startDown`(), `startLeft()`, `startRight()`)
+|`bigUp()`                      |-                |              |Direct the camera to up with a big movement
+|`bigDown()`                    |-                |              |Direct the camera to down with a big movement
+|`bigLeft()`                    |-                |              |Direct the camera to the left with a big movement
+|`bigRight()`                   |-                |              |Direct the camera to the right with a big movement
 |`setSpeakerView()`        |-           |             |
 |`goToSpeakerView()`       |-           |             |
 |`setFullView()`           |-           |             |
@@ -73,8 +73,8 @@
 |----------------------|------------|-------------|
 |`get()`               |-           |             |
 |`getCurrent()`        |-           |             |
-|`set()`               |-           |             |
-|`remove()`            |-           |             |
+|`set(`*logo*`)`       |String      |             |
+|`remove(`*logo*`)`    |String           |             |
 
 # Context
 

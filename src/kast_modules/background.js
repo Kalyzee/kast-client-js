@@ -1,6 +1,6 @@
-(function() {
+(function () {
 
-    module.exports = function(socket) {
+    module.exports = function (socket) {
 
         this.socket = socket
 
@@ -12,12 +12,12 @@
             this.socket.send("background/get_current")
         }
 
-        this.set = () => {
-            this.socket.send("background/set")
+        this.set = (logo) => {
+            this.socket.send("background/set", {"background": logo})
         }
 
-        this.remove = () => {
-            this.socket.send("background/remove")
+        this.remove = (logo) => {
+            this.socket.send("background/remove", { "background": logo })
         }
     }
 })()

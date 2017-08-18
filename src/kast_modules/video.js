@@ -15,13 +15,13 @@
                 callback(session)
             })
         }
-
+    
         this.getList = () => {
             this.socket.send("video/list")
         }
 
         this.remove = (id) => {
-            this.socket.send("video/remove", id)
+            this.socket.send("video/remove", {"id":id})
         }
 
         this.update = (id, title) => {

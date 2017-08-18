@@ -12,16 +12,16 @@
             this.socket.send("usbdevice/copy_video")
         }
 
-        this.deviceDirList = () => {
-            this.socket.send("usbdevice/device_dir_list")
+        this.deviceDirList = (id, path) => {
+            this.socket.send("usbdevice/device_dir_list", {"device_id": id, "path": path})
         }
 
-        this.copyTemplate = () => {
-            this.socket.send("usbdevice/copy_template")
+        this.copyTemplate = (id, path) => {
+            this.socket.send("usbdevice/copy_template", {"device_id": id, "path": path})
         }
 
-        this.copyBackground = () => {
-            this.socket.send("usbdevice/copy_background")
+        this.copyBackground = (id, path) => {
+            this.socket.send("usbdevice/copy_background", {"device_id": id, "path": path})
         }
     }
 })()

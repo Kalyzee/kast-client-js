@@ -30,8 +30,8 @@
             this.socket.send("audio/boost_down", {})
         }
 
-        this.setSource = () => {
-            this.socket.send("audio/set_source")
+        this.setSource = (source) => {
+            this.socket.send("audio/set_source",{"source":source})
         }
 
         this.toggleMute = () => {
