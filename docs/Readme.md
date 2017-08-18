@@ -164,18 +164,12 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Background <a id="background"></a>
 
-| Function                 | Description                                                                   
-|---------------------------------------------------------------------------------------------------------------------------------|
+| Function                 | Description                                                                  | 
+|--------------------------|------------------------------------------------------------------------------|
 |`get()`                   |
 |`getCurrent()`            |
 |`set(`*String logo*`)`    |
 |`remove(`*String logo*`)` |
-
-## Context <a id="context"></a>
-
-| Function                                          | Description                                                                  | 
-|---------------------------------------------------|------------------------------------------------------------------------------|
-|`onUpdated()`         |-           |             |
 
 ## Logo <a id="logo"></a>
 
