@@ -221,6 +221,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`onLongProcessEnd()`  |
 |`onSuccess()`         |
 |`onError()`           |
+
 ## Update <a id="update"></a>
 
 | Function               | Description                                                                  | 
