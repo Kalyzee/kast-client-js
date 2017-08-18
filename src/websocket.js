@@ -6,14 +6,12 @@
 
     var KastWebSocket = function (url, _WebSocket) {
 
-        if(typeof(_WebSocket) == "function")
+        if (typeof (_WebSocket) == "function")
             WebSocket = _WebSocket
-
 
         var _this = this;
         _this.url = typeof url !== 'undefined' ? url : 'ws://localhost:8000';
         _this.client = new WebSocket(_this.url);
-        console.log(_this.client.readyState)
         _this.events = {};
         _this.waitActionList = [];
 
