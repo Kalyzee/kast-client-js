@@ -87,7 +87,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
     kast.camera.up() // Execute an action to direct your camera up
     kast.camera.down() // Execute an action to direct your camera down
 
-    kast.video.getList() // Send a request to get the list video
+    kast.video.getList() // Send a request to get the video list
 
     kast.video.onGetList((`list`) => {
         // you receive the video list in variable `list`
