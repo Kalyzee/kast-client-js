@@ -95,6 +95,8 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 
 
+# Kast Modules<a id="kastModules"></a>
+
 # Camera <a id="camera"></a>
 
 **This class is used to execute actions on the camera**
