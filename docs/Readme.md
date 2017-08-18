@@ -97,7 +97,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 # Kast Modules<a id="kastModules"></a>
 
-# Camera <a id="camera"></a>
+## Camera <a id="camera"></a>
 
 **This class is used to execute actions on the camera**
 
@@ -138,7 +138,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`getRoomList()`           |-           |             |
 |`getCurrentRoom()`        |-           |             |
 
-# Audio <a id="audio"></a>
+## Audio <a id="audio"></a>
 
 | Function                 | Parameter | Description |
 |--------------------------|-----------|-------------|
@@ -151,7 +151,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`setSource()`             |-           |             |
 |`toggleMute()`            |-           |             |
 
-# Video <a id="video"></a>
+## Video <a id="video"></a>
 
 | Function                       | Parameter type  | Return type value  | Description |
 |--------------------------------|-----------------|--------------------|-------------|
@@ -166,7 +166,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`setSessionTitle()`             |-                |             |
 |`setSessionSpeaker()`           |-                |             |
 
-# Background <a id="background"></a>
+## Background <a id="background"></a>
 
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
@@ -175,13 +175,13 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`set(`*logo*`)`       |String      |             |
 |`remove(`*logo*`)`    |String           |             |
 
-# Context <a id="context"></a>
+## Context <a id="context"></a>
 
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
 |`onUpdated()`         |-           |             |
 
-# Logo <a id="logo"></a>
+## Logo <a id="logo"></a>
 
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
@@ -193,7 +193,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`onCurrentLogo()`     |-           |             |
 |`onSetLogo()`         |-           |             |
 
-# Mixer <a id="mixer"></a>
+## Mixer <a id="mixer"></a>
 
 | Function                      | Parameter type  | Return type value  | Description |
 |-------------------------------|-----------------|--------------------|-------------|
@@ -208,7 +208,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`getAlphaBW()`                 |-                |                    |
 |`onGetAlphaBW(`*Callback*`)`   |Callback function|Array[Int, Int]     |             
 
-# Network <a id="network"></a>
+## Network <a id="network"></a>
 
 | Function      | Parameter  | Description |
 |---------------|------------|-------------|
@@ -217,7 +217,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`restart()`    |-           |             |
 |`onUpdated()`  |-           |             |
 
-# System <a id="system"></a>
+## System <a id="system"></a>
  
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
@@ -226,7 +226,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`onSuccess()`         |-           |             |
 |`onError()`           |-           |             |
 
-# Update <a id="update"></a>
+## Update <a id="update"></a>
 
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
@@ -236,7 +236,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`onNoUpdateAvailable()` |-           |             |
 |`onUpdateStart()`       |-           |             |
 
-# Usb Management <a id="usb"></a>
+## Usb Management <a id="usb"></a>
 
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
@@ -246,7 +246,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`copyTemplate()`      |-           |             |
 |`copyBackground()`    |-           |             |
 
-# Context <a id="context"></a>
+## Context <a id="context"></a>
 
 | Function             | Parameter  | Description |
 |----------------------|------------|-------------|
