@@ -100,43 +100,45 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 **This class is used to execute actions on the camera**
 
-| Function                     |   Description                                                                               | 
-|------------------------------|---------------------------------------------------------------------------------------------|
-|`zoomIn()`                    |Execute a zoom in
-|`zoomOut()`                   |Execute a zoom out
-|`zoomStop()`                  |Stop zoom action
-|`up()`                        |Directs the camera up
-|`down()`                      |Directs the camera down
-|`left()`                      |Directs the camera to the left
-|`right()`                     |Directs the camera to the right
-|`startUp()`                   |Directs the camera up and wait the `stop()` function to stop
-|`startDown()`                 |Directs the camera down and wait the `stop()` function to stop  
-|`startLeft()`                 |Directs the camera to the left and wait the `stop()` function to stop
-|`startRight()`                |Directs the camera to the right and wait the `stop()` function to stop
-|`stop()`                      |Stop directs actions on camera (`startUp()`, `startDown`(), `startLeft()`, `startRight()`)
-|`bigUp()`                     |Directs the camera up with a big movement
-|`bigDown()`                   |Directs the camera down with a big movement
-|`bigLeft()`                   |Directs the camera to the left with a big movement
-|`bigRight()`                  |Directs the camera to the right with a big movement
-|`setSpeakerView()`            |             
-|`goToSpeakerView()`           |             
-|`setFullView()`               |             
-|`goToFullView()`              |             
-|`setMediumView()`             |             
-|`goToMediumView()`            |             
-|`setTrackingZone()`           |             
-|`endSettingTrackingZone()`    |             
-|`startTracking()`             |             
-|`stopTracking()`              |             
-|`mouseUp()`                   |             
-|`mouseDown()`                 |             
-|`mousePosition()`             |             
-|`createRoom()`                |             
-|`deleteRoom()`                |             
-|`setRoom()`                   |             
-|`getRoomList()`               |             
-|`getCurrentRoom()`            |             
-
+| Function                                      |   Description                                                                               | 
+|-----------------------------------------------|---------------------------------------------------------------------------------------------|
+|`zoomIn()`                                     |Execute a zoom in
+|`zoomOut()`                                    |Execute a zoom out
+|`zoomStop()`                                   |Stop zoom action
+|`up()`                                         |Directs the camera up
+|`down()`                                       |Directs the camera down
+|`left()`                                       |Directs the camera to the left
+|`right()`                                      |Directs the camera to the right
+|`startUp()`                                    |Directs the camera up and wait the `stop()` function to stop
+|`startDown()`                                  |Directs the camera down and wait the `stop()` function to stop  
+|`startLeft()`                                  |Directs the camera to the left and wait the `stop()` function to stop
+|`startRight()`                                 |Directs the camera to the right and wait the `stop()` function to stop
+|`stop()`                                       |Stop directs actions on camera (`startUp()`, `startDown`(), `startLeft()`, `startRight()`)
+|`bigUp()`                                      |Directs the camera up with a big movement
+|`bigDown()`                                    |Directs the camera down with a big movement
+|`bigLeft()`                                    |Directs the camera to the left with a big movement
+|`bigRight()`                                   |Directs the camera to the right with a big movement
+|`setSpeakerView()`                             |             
+|`goToSpeakerView()`                            |             
+|`setFullView()`                                |             
+|`goToFullView()`                               |             
+|`setMediumView()`                              |             
+|`goToMediumView()`                             |             
+|`setTrackingZone()`                            |             
+|`endSettingTrackingZone()`                     |             
+|`startTracking()`                              |             
+|`stopTracking()`                               |             
+|`mouseUp()`                                    |             
+|`mouseDown()`                                  |             
+|`mousePosition()`                              |             
+|`createRoom()`                                 |             
+|`deleteRoom()`                                 |             
+|`setRoom()`                                    |             
+|`onSetRoom(`*callback(Object room*`)`          |
+|`getRoomList()`                                |             
+|`onGetRoomList(`*callback([Object] roomList*`)`|
+|`getCurrentRoom()`                             |             
+|`onGetCurrentRoom(`*callback(Object room*`)`   |
 
 ## Audio <a id="audio"></a>
 
@@ -152,7 +154,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 | Function                               | Description                                                                  | 
 |----------------------------------------|  ------------------------------------------------------------------------------|
 |`getList()`                             |
-|`onGetList(`*callback(Object list*`)`     |
+|`onGetList(`*callback(Object list*`)`   |
 |`remove(`*int id*`)`                    |
 |`update(`*int id, String title*`)`      |
 |`startRecord()`                         |

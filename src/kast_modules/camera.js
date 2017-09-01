@@ -131,12 +131,30 @@
             this.socket.send("camera/set_room", name)
         }
 
+        this.onSetRoom = (callback) => {
+            this.socket.register("camera/set_room", (room) => {
+                callback(room)
+            })
+        }
+
         this.getRoomList = () => {
             this.socket.send("camera/get_room_list")
         }
 
+        this.onGetRoomList = (callback) => {
+            this.socket.register("camera/get_room_list", (roomList) => {
+                callback(roomList)
+            })
+        }
+
         this.getCurrentRoom = () => {
             this.socket.send("camera/get_current_room")
+        }
+
+        this.onGetCurrentRoom = (callback) => {
+            this.socket.register("camera/get_current_room", (currentRoom) => {
+                callback(currentRoom)
+            })
         }
     }
 })()
