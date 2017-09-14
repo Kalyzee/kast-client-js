@@ -9,7 +9,9 @@
                 callback(message)
             })
         }
+
+        this.get = () => {
+            this.socket.send("context/get")
+        }
     }
-
-
 })()

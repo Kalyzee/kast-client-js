@@ -4,6 +4,24 @@
 
         this.socket = socket
 
+        this.onBackgroundList = (callback) => {
+            this.socket.register("background/list", (bgList) => {
+                callback(bgList)
+            })
+        }
+
+        this.onCurrentBackground = (callback) => {
+            this.socket.register("background/get_current", (currentBg) => {
+                callback(currentBg)
+            })
+        }
+
+        this.onSetBackground = (callback) => {
+            this.socket.register("background/set", (params) => {
+                callback(params)
+            })
+        }
+
         this.get = () => {
             this.socket.send("background/get")
         }

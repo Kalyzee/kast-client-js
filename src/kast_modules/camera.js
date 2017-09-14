@@ -1,7 +1,14 @@
 (function () {
 
-    module.exports = function(socket) {
+    module.exports = function (socket) {
         this.socket = socket
+
+        // Camera constants
+        this.views = {
+            SPEAKER: 0,
+            FULL: 1,
+            MEDIUM: 2
+        }
 
         this.zoomIn = () => {
             this.socket.send("camera/zoom_in")
@@ -71,24 +78,59 @@
             this.socket.send("camera/set_speaker_view")
         }
 
-        this.goToSpeakerView = () => {
-            this.socket.send("camera/go_to_speaker_view")
-        }
-
         this.setFullView = () => {
             this.socket.send("camera/set_full_view")
-        }
-
-        this.goToFullView = () => {
-            this.socket.send("camera/go_to_full_view")
         }
 
         this.setMediumView = () => {
             this.socket.send("camera/set_medium_view")
         }
 
+        this.saveView = (view) => {
+            switch (view) {
+                case this.views.VIEW_SPEAKER:
+                    this.setSpeakerView()
+                    break;
+                case this.views.VIEW_FULL:
+                    this.setFullView()
+                    break;
+                case this.views.VIEW_MEDIUM:
+                    this.setMediumView()
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        this.goToSpeakerView = () => {
+            this.socket.send("editing/switch_monospeaker")
+            this.socket.send("camera/go_to_speaker_view")
+        }
+
+        this.goToFullView = () => {
+            this.socket.send("editing/switch_multispeaker")
+            this.socket.send("camera/go_to_full_view")
+        }
+
         this.goToMediumView = () => {
+            this.socket.send("editing/switch_mediumspeaker")
             this.socket.send("camera/go_to_medium_view")
+        }
+
+        this.switchView = (view) => {
+            switch (view) {
+                case this.views.SPEAKER:
+                    this.goToSpeakerView()
+                    break;
+                case this.views.FULL:
+                    this.goToFullView()
+                    break;
+                case this.views.MEDIUM:
+                    this.goToMediumView()
+                    break;
+                default:
+                    break;
+            }
         }
 
         this.setTrackingZone = () => {
@@ -100,11 +142,11 @@
         }
 
         this.startTracking = () => {
-            this.socket.send("camera/start_tracking")
+            this.socket.send("camera/start_track")
         }
 
         this.stopTracking = () => {
-            this.socket.send("camera/stop_tracking")
+            this.socket.send("camera/stop_track")
         }
 
         this.mouseUp = () => {
@@ -116,7 +158,7 @@
         }
 
         this.mousePosition = (x, y) => {
-            this.socket.send("camera/mouse_position", {'posX': x, 'posY': y})
+            this.socket.send("camera/mouse_position", { 'posX': x, 'posY': y })
         }
 
         this.createRoom = (name) => {

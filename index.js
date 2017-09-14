@@ -10,6 +10,7 @@ let Network = require('./src/kast_modules/network')
 let Update = require('./src/kast_modules/update')
 let System = require('./src/kast_modules/system')
 let Context = require('./src/kast_modules/context')
+let Connection = require('./src/kast_modules/connection')
 
 
 module.exports = function (url, websocket) {
@@ -27,5 +28,6 @@ module.exports = function (url, websocket) {
     this.update = new Update(this.socket)
     this.system = new System(this.socket)
     this.context = new Context(this.socket)
+    this.connection = new Connection(this.socket)
 }
 

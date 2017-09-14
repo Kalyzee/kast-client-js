@@ -37,37 +37,37 @@
         _this.fireEvent = function (eventName, params) {
             if (_this.events[eventName]) {
 
-                this.events[eventName].forEach(function (cb) {
+                _this.events[eventName].forEach(function (cb) {
                     cb(params);
                 });
             }
         };
 
         _this.register = function (eventName, callback) {
-            if (!this.events[eventName]) {
-                this.events[eventName] = [];
+            if (!_this.events[eventName]) {
+                _this.events[eventName] = [];
             }
-            this.events[eventName].push(callback);
+            _this.events[eventName].push(callback);
         };
 
         _this.unregister = function (eventName, callback) {
 
             var id_del = -1;
-            this.events[eventName].forEach(function (cb, index) {
+            _this.events[eventName].forEach(function (cb, index) {
                 if (cb === callback) id_del = index;
             });
-            if (id_del >= 0) delete this.events[eventName][id_del];
+            if (id_del >= 0) delete _this.events[eventName][id_del];
 
         };
 
 
         _this.send = function (route, data) {
 
-            if (this.client.readyState == 1) {
+            if (_this.client.readyState == 1) {
                 if (typeof data !== 'undefined') {
-                    this.client.send(JSON.stringify({ "action": route, "params": data }));
+                    _this.client.send(JSON.stringify({ "action": route, "params": data }));
                 } else {
-                    this.client.send(JSON.stringify({ "action": route }));
+                    _this.client.send(JSON.stringify({ "action": route }));
                 };
             }
             else {
@@ -75,16 +75,20 @@
                     route: route,
                     data, data
                 };
-                this.waitActionList.push(action)
+                _this.waitActionList.push(action)
             };
         };
 
         _this.close = function () {
-            this.client.close();
+            _this.client.close();
         };
 
         _this.readyState = function () {
-            return this.client.readyState;
+            return _this.client.readyState;
+        };
+
+        _this.getClient = function () {
+            return _this.client
         };
 
 
