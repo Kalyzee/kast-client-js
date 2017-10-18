@@ -1,17 +1,9 @@
-(function() {
+var Generator = require('../generator');
 
-    module.exports = function(socket) {
+module.exports = function (socket) {
 
-        this.socket = socket
+    this.events = ['updated'];
+    this.actions = [Generator.createAction('get')];
 
-        this.onUpdated = (callback) => {
-            this.socket.register("context/updated", (message) => {
-                callback(message)
-            })
-        }
-
-        this.get = () => {
-            this.socket.send("context/get")
-        }
-    }
-})()
+    return Generator.generate(socket, 'context', this.events, this.actions);
+}

@@ -2,18 +2,16 @@
 
     module.exports = function (socket) {
 
-        this.socket = socket
+        this.socket = socket;
 
-        this.onOpen = (callback) => {
-            this.socket.getClient().onopen = (openData) => {
-                callback(openData)
-            }
-        }
+        this.onOpen = (callback, ctx) => {
+            this.socket.registerOnOpen(callback, ctx)
+        };
 
-        this.onClose = (callback) => {
-            this.socket.getClient().onclose = (closeData) => {
-                callback(closeData)
-            }
-        }
+        this.onClose = (callback, ctx) => {
+            this.socket.registerOnClose(callback, ctx)
+        };
+
+        this.connectIfNeeded = this.socket.connectIfNeeded;
     }
 })()

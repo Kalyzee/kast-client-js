@@ -1,33 +1,15 @@
-(function() {
+var Generator = require('../generator');
 
-    module.exports = function(socket) {
+module.exports = function(socket) {
 
-        this.socket = socket
+    this.events = [
+        'start',
+        'update_available', 'no_update_available'
+    ];
 
-        this.onUpdateStart = (callback) => {
-            this.socket.register("update/start", () => {
-                callback()
-            })
-        }
+    this.actions = [
+        Generator.createAction('check')
+    ];
 
-        this.onUpdateAvailable = (callback) => {
-            this.socket.register("update/update_available", () => {
-                callback()
-            })
-        }
-
-        this.onNoUpdateAvailable = (callback) => {
-            this.socket.register("update/no_update_available", () => {
-                callback()
-            })
-        }
-
-        this.onCheckupdate = (callback) => {
-            this.socket.register("update/")
-        }
-
-        this.check = () => {
-            this.socket.send("update/check")
-        }
-    }
-})()
+    return Generator.generate(socket, 'update', this.events, this.actions);
+}

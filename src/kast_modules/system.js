@@ -1,31 +1,14 @@
-(function () {
+var Generator = require('../generator');
 
-    module.exports = function (socket) {
+module.exports = function(socket) {
 
-        this.socket = socket
+    this.events = [
+        'notification_success', 'notification_error',
+        'long_process', 'long_process_ended',
+        'success', 'error'
+    ];
 
-        this.onLongProcess = (callback) => {
-            this.socket.register("system/long_process", (message) => {
-                callback(message)
-            })
-        }
+    this.actions = [];
 
-        this.onLongProcessEnd = (callback) => {
-            this.socket.register("system/long_process_ended", (message) => {
-                callback(message)
-            })
-        }
-
-        this.onSuccess = (callback) => {
-            this.socket.register("system/notification_success", (message) => {
-                callback(message)
-            })
-        }
-
-        this.onError = (callback) => {
-            this.socket.register("system/error", (message) => {
-                callback(message)
-            })
-        }
-    }
-})()
+    return Generator.generate(socket, 'system', this.events, this.actions);
+}

@@ -1,41 +1,17 @@
-(function () {
+var Generator = require('../generator');
 
-    module.exports = function (socket) {
+module.exports = function(socket) {
 
-        this.socket = socket
+    this.events = [
+        'list', 'get_current', 'set'
+    ];
 
-        this.onBackgroundList = (callback) => {
-            this.socket.register("background/list", (bgList) => {
-                callback(bgList)
-            })
-        }
+    this.actions = [
+        Generator.createAction('get'),
+        Generator.createAction('get_current'),
+        Generator.createAction('set'),
+        Generator.createAction('remove')
+    ];
 
-        this.onCurrentBackground = (callback) => {
-            this.socket.register("background/get_current", (currentBg) => {
-                callback(currentBg)
-            })
-        }
-
-        this.onSetBackground = (callback) => {
-            this.socket.register("background/set", (params) => {
-                callback(params)
-            })
-        }
-
-        this.get = () => {
-            this.socket.send("background/get")
-        }
-
-        this.getCurrent = () => {
-            this.socket.send("background/get_current")
-        }
-
-        this.set = (logo) => {
-            this.socket.send("background/set", {"background": logo})
-        }
-
-        this.remove = (logo) => {
-            this.socket.send("background/remove", { "background": logo })
-        }
-    }
-})()
+    return Generator.generate(socket, 'background', this.events, this.actions);
+}

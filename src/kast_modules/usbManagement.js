@@ -1,27 +1,24 @@
-(function () {
+var Generator = require('../generator');
+var Constants = require('../constants');
 
-    module.exports = function(socket) {
+module.exports = function(socket) {
 
-        this.socket = socket
+    this.events = [
+        'device_added', 'device_removed',
+        'device_list', 'device_dir_list',
+        'copy_template', // NOT READY YET SERVER SIDE
+        'copy_background', // NOT READY YET SERVER SIDE
+        'copy_progress'
+    ];
 
-        this.deviceList = () => {
-            this.socket.send("usbdevice/device_list")
-        }
+    this.actions = [
+        Generator.createAction('device_list'),
+        Generator.createAction('device_dir_list'),
 
-        this.copyVideo = () => {
-            this.socket.send("usbdevice/copy_video")
-        }
+        Generator.createAction('copy_template'),
+        Generator.createAction('copy_background'),
+        Generator.createAction('copy_video')
+    ];
 
-        this.deviceDirList = (id, path) => {
-            this.socket.send("usbdevice/device_dir_list", {"device_id": id, "path": path})
-        }
-
-        this.copyTemplate = (id, path) => {
-            this.socket.send("usbdevice/copy_template", {"device_id": id, "path": path})
-        }
-
-        this.copyBackground = (id, path) => {
-            this.socket.send("usbdevice/copy_background", {"device_id": id, "path": path})
-        }
-    }
-})()
+    return Generator.generate(socket, 'usbdevice', this.events, this.actions);
+}

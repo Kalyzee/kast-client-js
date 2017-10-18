@@ -1,41 +1,17 @@
-(function () {
+var Generator = require('../generator');
 
-    module.exports = function(socket) {
+module.exports = function(socket) {
 
-        this.socket = socket
+    this.events = [
+        'list', 'get_current', 'set'
+    ];
 
-        this.onLogoList = (callback) => {
-            this.socket.register("logo/list", (logoList) => {
-                callback(logoList)
-            })
-        }
+    this.actions = [
+        Generator.createAction('get'),
+        Generator.createAction('get_current'),
+        Generator.createAction('set'),
+        Generator.createAction('remove')
+    ];
 
-        this.onCurrentLogo = (callback) => {
-            this.socket.register("logo/get_current", (currentLogo) => {
-                callback(currentLogo)
-            })
-        }
-
-        this.onSetLogo = (callback) => {
-            this.socket.register("logo/set", (params) => {
-                callback(params)
-            })
-        }
-
-        this.get = () => {
-            this.socket.send("logo/get")
-        }
-        
-        this.getCurrent = () => {
-            this.socket.send("logo/get_current")
-        }
-
-        this.set = (logo) => {
-            this.socket.send("logo/set", {"logo": logo})
-        }
-
-        this.remove = (logo) => {
-            this.socket.send("logo/remove", {"logo": logo })
-        }
-    }
-})()
+    return Generator.generate(socket, 'logo', this.events, this.actions);
+}

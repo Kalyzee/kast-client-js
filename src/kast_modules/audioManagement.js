@@ -1,41 +1,20 @@
-(function () {
+var Generator = require('../generator');
 
-    module.exports = function (socket) {
+module.exports = function(socket) {
 
-        this.socket = socket
+    this.events = [
+        'context'
+    ];
 
-        this.onContext = (callback) => {
-            this.socket.register("audio/context", (context) => {
-                callback(context)
-            })
-        }
+    this.actions = [
+        Generator.createAction('context'),
+        Generator.createAction('volume_up'),
+        Generator.createAction('volume_down'),
+        Generator.createAction('boost_up'),
+        Generator.createAction('boost_down'),
+        Generator.createAction('set_source'),
+        Generator.createAction('toggle_mute')
+    ];
 
-        this.context = () => {
-            this.socket.send("audio/context", {})
-        }
-    
-        this.volumeUp = () => {
-            this.socket.send("audio/volume_up", {})
-        }
-
-        this.volumeDown = () => {
-            this.socket.send("audio/volume_down", {})
-        }
-
-        this.boostUp = () => {
-            this.socket.send("audio/boost_up", {})
-        }
-
-        this.boostDown = () => {
-            this.socket.send("audio/boost_down", {})
-        }
-
-        this.setSource = (source) => {
-            this.socket.send("audio/set_source",{"source":source})
-        }
-
-        this.toggleMute = () => {
-            this.socket.send("audio/toggle_mute")
-        }
-    }
-})()
+    return Generator.generate(socket, 'audio', this.events, this.actions);
+}

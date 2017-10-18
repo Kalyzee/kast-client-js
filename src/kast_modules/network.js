@@ -1,38 +1,19 @@
-(function () {
+var Generator = require('../generator');
+var Constants = require('../constants');
 
-    module.exports = function(socket) {
-        this.socket = socket
+module.exports = function(socket) {
 
-        this.onUpdated = (callback) => {
-            this.socket.register("network/updated", (params) => {
-                callback(params)
-            })
-        }
+    this.events = [
+        'get_live_data', 'updated'
+    ];
 
-        this.getInfo = () => {
-            this.socket.send("network/get")
-        }
+    this.actions = [
+        Generator.createAction('switch_scene', ['scene_id']),
 
-        this.setInfo = (networkInfo) => {
-            this.socket.send("network/set", networkInfo)
-        }
+        Generator.createAction('get'),
+        Generator.createAction('set'),
+        Generator.createAction('restart'),
+    ];
 
-        this.restart = () => {
-            this.socket.send("network/restart")
-        }
-
-        this.getLiveData = () => {
-            this.socket.send("publication/get_live_data", {});
-        }
-
-        this.setLiveData = (liveData) => {
-            this.socket.send("publication/set_live_data", liveData);
-        }
-
-        this.onLiveData = (callback) => {
-            this.socket.register("publication/get_live_data", (params) => {
-                callback(params)
-            })
-        }
-    }
-})()
+    return Generator.generate(socket, 'network', this.events, this.actions);
+}
