@@ -15,7 +15,8 @@ module.exports = function(socket) {
         Generator.createAction('stop_record'),
         Generator.createAction('current_session'),
         Generator.createAction('set_session_title'),
-        Generator.createAction('set_session_speaker')
+        Generator.createAction('set_session_speaker'),
+        Generator.createAction('usb_copy'),
     ];
 
     return Generator.generate(socket, 'video', this.events, this.actions);

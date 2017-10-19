@@ -10,7 +10,8 @@ module.exports = function(socket) {
         Generator.createAction('get'),
         Generator.createAction('get_current'),
         Generator.createAction('set'),
-        Generator.createAction('remove')
+        Generator.createAction('remove'),
+        Generator.createAction('usb_copy')
     ];
 
     return Generator.generate(socket, 'logo', this.events, this.actions);
