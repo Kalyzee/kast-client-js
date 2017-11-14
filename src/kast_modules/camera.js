@@ -57,6 +57,7 @@ module.exports = function (socket) {
     ];
 
     var cameraModule = Generator.generate(socket, 'camera', this.events, this.actions);
+    cameraModule.views = Constants.views
 
     cameraModule.saveView = function(view) {
         switch (view) {
