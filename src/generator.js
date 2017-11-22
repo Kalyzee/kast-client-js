@@ -31,7 +31,7 @@ module.exports = {
         for (var i = 0; i < events.length; i++) {
             const event = events[i];
             const route = [prefix, event].join(routeSeparator);
-            
+
             // onEvent... | Registering
             ModuleClass[snakeToCamel('on_' + event)] = function (callback, ctx) {
                 socket.register(route, callback, ctx);
@@ -47,12 +47,24 @@ module.exports = {
         for (var i = 0; i < actions.length; i++) {
 
             const action = actions[i];
-            const actionName = snakeToCamel(action.name);
             const route = [prefix, action.name].join(routeSeparator);
 
-            ModuleClass[actionName] = function () {
-                this.route = route;
+            let routePrefixes = action.name.split('/');
 
+            // Creating sub-children (ex : Module.dev.func())
+            let currentRoute = ModuleClass;
+
+            while (routePrefixes.length > 1) {
+                const routePrefix = routePrefixes.shift();
+                if (!currentRoute[routePrefix])
+                    currentRoute[routePrefix] = {};
+
+                currentRoute = currentRoute[routePrefix];
+            }
+
+            const actionName = snakeToCamel(routePrefixes[0]);
+            currentRoute[actionName] = function () {
+                this.route = route;
                 socket.send(route, arguments[0] || {});
             };
         }

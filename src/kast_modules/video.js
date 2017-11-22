@@ -4,7 +4,8 @@ module.exports = function(socket) {
 
     this.events = [
         'list',
-        'current_session'
+        'current_session',
+        'live_error'
     ];
 
     this.actions = [
@@ -17,6 +18,7 @@ module.exports = function(socket) {
         Generator.createAction('set_session_title'),
         Generator.createAction('set_session_speaker'),
         Generator.createAction('usb_copy'),
+        Generator.createAction('dev/get_live_error'),
     ];
 
     return Generator.generate(socket, 'video', this.events, this.actions);

@@ -4,7 +4,7 @@ var Constants = require('../constants');
 module.exports = function(socket) {
 
     this.events = [
-        'get_live_data'
+        'get_live_data',
     ];
 
     this.actions = [
