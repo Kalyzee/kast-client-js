@@ -21,7 +21,7 @@
 
         _this.connectIfNeeded = function () {
 
-            if (!_this.client || (_this.readyState() > 1)) {
+            if (!_this.client) {
 
                 // Cleaning old one
                 if (_this.client) {
@@ -58,8 +58,16 @@
                 };
 
                 _this.client.onError = (error) => {
-                    console.log('ERREUR :', error)
+                    console.log('WS Error :', error)
                 }
+
+                setTimeout(() => {
+                    if (_this.client.readyState !== 1) {
+                        _this.client.close();
+                        _this.client = undefined;
+                        _this.connectIfNeeded();
+                    }
+                }, 2000);
             }
         };
 
@@ -115,21 +123,19 @@
                 } else {
                     _this.client.send(JSON.stringify({ "action": route }));
                 };
-            }
-            else {
+            } else {
                 var action = {
                     route: route,
                     data, data
                 };
                 _this.waitActionList.push(action);
-                // Works but unclean
-                // _this.connectIfNeeded()
             };
         };
 
         _this.close = function () {
             if (_this.readyState() == 1) {
                 _this.client.close();
+                _this.client = undefined;
             }
         };
 
