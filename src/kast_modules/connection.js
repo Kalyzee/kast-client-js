@@ -12,6 +12,8 @@
             this.socket.registerOnClose(callback, ctx)
         };
 
-        this.connectIfNeeded = this.socket.connectIfNeeded;
+        this.onError = (callback, ctx) => {
+            this.socket.registerOnError(callback, ctx)
+        };
     }
 })()

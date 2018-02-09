@@ -2,19 +2,11 @@
   "name": "kast-client",
   "preferGlobal": true,
   "version": "1.0.1",
-  "author": "Ludovic Bouguerra <ludovic.bouguerra@kalyzee.com>, Lionel Miceli <lionel.miceli@gmail.com>",
+  "author": "Ludovic Bouguerra <ludovic.bouguerra@kalyzee.com>, Lionel Miceli <lionel.miceli@gmail.com>, Alann Sapone <alann.sapone@kalyzee.com>",
   "description": "Kast Websocket Client",
   "license": "MIT",
-  "scripts": {
-    "test": "node tests/all.js",
-    "min": "uglifyjs --compress --mangle --output build/kast-client.min.js src/client.js src/webservices.js src/websockets.js"
-  },
   "dependencies": {
-    "json-lint": "~0.1.0",
+    "reconnecting-websocket": "^3.2.2",
     "ws": "^3.1.0"
-  },
-  "devDependencies": {
-    "test": ">=0.0.5",
-    "uglify-js": ">=3.0.0"
   }
 }

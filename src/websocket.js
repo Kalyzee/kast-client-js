@@ -1,151 +1,144 @@
+const ReconnectingWebSocket = require('reconnecting-websocket');
+
+const webSocketOptions = {
+    maxReconnectionDelay: 3000,
+    minReconnectionDelay: 500,
+    connectionTimeout: 5000
+};
+
 (function () {
-
-    /**
-    *
-    */
-
-    var KastWebSocket = function (url, _WebSocket) {
-
-        if (typeof (_WebSocket) == "function")
-            WebSocket = _WebSocket
-
+    var KastWebSocket = function (url = "ws://localhost:8000") {
         var _this = this;
-        _this.url = typeof url !== 'undefined' ? url : 'ws://localhost:8000';
 
-        _this.events = {};
-        _this.eventsOnOpen = [];
-        _this.eventsOnClose = [];
-        _this.waitActionList = [];
+        this.events = {};
+        this.eventsOnOpen = [];
+        this.eventsOnClose = [];
+        this.eventsOnError = [];
+        this.waitActionList = [];
 
-        _this.client = undefined;
-
-        _this.connectIfNeeded = function () {
-
-            if (!_this.client) {
-
-                // Cleaning old one
-                if (_this.client) {
-                    _this.client.onopen = function() {}
-                    _this.client.onClose = function() {}
-                    _this.client.close()
-                }
-
-                // Creating new one
-                _this.client = new WebSocket(_this.url);
-
-                _this.client.onmessage = function (event) {
-                    const jsdata = JSON.parse(event.data);
-                    _this.fireEvent(jsdata.action, jsdata.params);
-                };
-
-                _this.client.onopen = () => {
-                    _this.waitActionList.forEach(function (action) {
-                        _this.send(action.route, action.data);
-                    });
-                    _this.waitActionList.splice(0, _this.waitActionList.length - 1);
-
-                    _this.eventsOnOpen.forEach(function (cbObj) {
-                        const ctxCb = cbObj.cb.bind(cbObj.ctx || this);
-                        ctxCb();
-                    });
-                };
-
-                _this.client.onclose = () => {
-                    _this.eventsOnClose.forEach(function (cbObj) {
-                        const ctxCb = cbObj.cb.bind(cbObj.ctx || this);
-                        ctxCb();
-                    });
-                };
-
-                _this.client.onError = (error) => {
-                    console.log('WS Error :', error)
-                }
-
-                setTimeout(() => {
-                    if (_this.client.readyState !== 1) {
-                        _this.client.close();
-                        _this.client = undefined;
-                        _this.connectIfNeeded();
-                    }
-                }, 2000);
-            }
+        /* Websocket Events Callbacks */
+        this.onmessage = function (event) {
+            const jsdata = JSON.parse(event.data);
+            _this.fireEvent(jsdata.action, jsdata.params);
         };
+        this.onopen = function () {
+            if (_this.waitActionList.lenght > 0) {
+                _this.waitActionList.forEach(function (action) {
+                    _this.send(action.route, action.data);
+                });
+                _this.waitActionList = [];
+            }
 
-        _this.fireEvent = function (eventName, params) {
-            if (_this.events[eventName]) {
-                _this.events[eventName].forEach(function (cbObj) {
-                    const ctxCb = cbObj.cb.bind(cbObj.ctx || this);
+            _this.eventsOnOpen.forEach(function (cbObj) {
+                const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
+                ctxCb();
+            });
+        };
+        this.onclose = function () {
+            _this.eventsOnClose.forEach(function (cbObj) {
+                const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
+                ctxCb();
+            });
+        };
+        this.onerror = function (error) {
+            _this.eventsOnError.forEach(function (cbObj) {
+                const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
+                ctxCb(error.message);
+            });
+        }
+
+        this.connect = function () {
+
+            if (this.client && this.client.readyState < 2) {
+                console.log("Closing old connection")
+                this.close(true)
+            }
+
+            this.client = new ReconnectingWebSocket(url, [], webSocketOptions);
+            this.client.onmessage = this.onmessage
+            this.client.onopen = this.onopen
+            this.client.onclose = this.onclose
+            this.client.onerror = this.onerror
+        }
+
+        this.fireEvent = function (eventName, params) {
+            if (this.events[eventName]) {
+                this.events[eventName].forEach(function (cbObj) {
+                    const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
                     ctxCb(params);
                 });
             }
         };
 
-        _this.register = function (eventName, callback, ctx) {
-            if (!_this.events[eventName]) {
-                _this.events[eventName] = [];
+        this.register = function (eventName, callback, ctx) {
+            if (!this.events[eventName]) {
+                this.events[eventName] = [];
             }
 
-            _this.events[eventName].push({
+            this.events[eventName].push({
                 cb: callback,
                 ctx: ctx
             });
         };
 
-        _this.registerOnOpen = function (callback, ctx) {
-            _this.eventsOnOpen.push({
+        this.registerOnOpen = function (callback, ctx) {
+            this.eventsOnOpen.push({
                 cb: callback,
                 ctx: ctx
             });
         };
 
-        _this.registerOnClose = function (callback, ctx) {
-            _this.eventsOnClose.push({
+        this.registerOnClose = function (callback, ctx) {
+            this.eventsOnClose.push({
                 cb: callback,
                 ctx: ctx
             });
         };
 
-        _this.unregister = function (eventName, callback) {
+        this.registerOnError = function (callback, ctx) {
+            this.eventsOnError.push({
+                cb: callback,
+                ctx: ctx
+            });
+        }
+
+        this.unregister = function (eventName, callback) {
             var id_del = -1;
-            _this.events[eventName].forEach(function (cbObj, index) {
+            this.events[eventName].forEach(function (cbObj, index) {
                 if (cbObj.cb === callback) {
                     id_del = index;
                 }
             });
-            if (id_del >= 0) delete _this.events[eventName][id_del];
+
+            if (id_del >= 0)
+                delete this.events[eventName][id_del];
         };
 
 
-        _this.send = function (route, data) {
-            if (_this.readyState() === 1) {
+        this.send = function (route, data) {
+            if (this.client.readyState === 1) {
                 if (typeof data !== 'undefined') {
-                    _this.client.send(JSON.stringify({ "action": route, "params": data }));
+                    this.client.send(JSON.stringify({ "action": route, "params": data }));
                 } else {
-                    _this.client.send(JSON.stringify({ "action": route }));
+                    this.client.send(JSON.stringify({ "action": route }));
                 };
             } else {
-                var action = {
-                    route: route,
-                    data, data
-                };
-                _this.waitActionList.push(action);
+                this.waitActionList.push({ "route": route, "data": data });
             };
         };
 
-        _this.close = function () {
-            if (_this.readyState() == 1) {
-                _this.client.close();
-                _this.client = undefined;
-            }
+        this.close = function (keepClosed = false) {
+            this.client.close(1000, '', { keepClosed: keepClosed, fastClose: true, delay: 0 });
+            this.waitActionList = [];
         };
 
-        _this.readyState = function () {
-            return _this.client.readyState;
+        this.getClient = function () {
+            return this.client;
         };
 
-        _this.getClient = function () {
-            return _this.client;
-        };
+
+        // Creating websocket automatically (TODO)
+        this.connect()
     };
 
     module.exports.KastWebSocket = KastWebSocket;
