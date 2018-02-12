@@ -1,9 +1,10 @@
 const ReconnectingWebSocket = require('reconnecting-websocket');
 
 let webSocketOptions = {
-    maxReconnectionDelay: 3000,
-    minReconnectionDelay: 500,
-    connectionTimeout: 5000
+    reconnectInterval: 500,
+    timeoutInterval: 3000,
+    reconnectDecay: 1.1,
+    automaticOpen: false
 };
 
 (function () {
@@ -25,6 +26,7 @@ let webSocketOptions = {
             _this.fireEvent(jsdata.action, jsdata.params);
         };
         this.onopen = function () {
+            _this.isConnected = true
             if (_this.waitActionList.length > 0) {
                 _this.waitActionList.forEach(function (action) {
                     _this.send(action.route, action.data);
@@ -32,16 +34,23 @@ let webSocketOptions = {
                 _this.waitActionList = [];
             }
 
+            console.log(_this)
+
             _this.eventsOnOpen.forEach(function (cbObj) {
                 const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
                 ctxCb();
             });
         };
         this.onclose = function () {
-            _this.eventsOnClose.forEach(function (cbObj) {
-                const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
-                ctxCb();
-            });
+            if (_this.isConnected) {
+                _this.isConnected = false
+                _this.eventsOnClose.forEach(function (cbObj) {
+                    const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
+                    ctxCb();
+                });
+            } else {
+                // connection attempt failed
+            }
         };
         this.onerror = function (error) {
             _this.eventsOnError.forEach(function (cbObj) {
@@ -53,15 +62,16 @@ let webSocketOptions = {
         this.connect = function () {
 
             if (this.client && this.client.readyState < 2) {
-                console.log("Closing old connection")
-                this.close(true)
+                console.log("Closing old connection");
+                this.close(true);
             }
 
             this.client = new ReconnectingWebSocket(url, null, webSocketOptions);
-            this.client.onmessage = this.onmessage
-            this.client.onopen = this.onopen
-            this.client.onclose = this.onclose
-            this.client.onerror = this.onerror
+            this.isConnected = false;
+            this.client.onmessage = this.onmessage;
+            this.client.onopen = this.onopen;
+            this.client.onclose = this.onclose;
+            this.client.onerror = this.onerror;
         }
 
         this.fireEvent = function (eventName, params) {
