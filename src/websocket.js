@@ -1,14 +1,17 @@
 const ReconnectingWebSocket = require('reconnecting-websocket');
 
-const webSocketOptions = {
+let webSocketOptions = {
     maxReconnectionDelay: 3000,
     minReconnectionDelay: 500,
     connectionTimeout: 5000
 };
 
 (function () {
-    var KastWebSocket = function (url = "ws://localhost:8000") {
+    var KastWebSocket = function (url = "ws://localhost:8000", webSocketConstructor) {
         var _this = this;
+
+        if (webSocketConstructor)
+            webSocketOptions.constructor = webSocketConstructor
 
         this.events = {};
         this.eventsOnOpen = [];
@@ -22,7 +25,7 @@ const webSocketOptions = {
             _this.fireEvent(jsdata.action, jsdata.params);
         };
         this.onopen = function () {
-            if (_this.waitActionList.lenght > 0) {
+            if (_this.waitActionList.length > 0) {
                 _this.waitActionList.forEach(function (action) {
                     _this.send(action.route, action.data);
                 });
@@ -54,7 +57,7 @@ const webSocketOptions = {
                 this.close(true)
             }
 
-            this.client = new ReconnectingWebSocket(url, [], webSocketOptions);
+            this.client = new ReconnectingWebSocket(url, null, webSocketOptions);
             this.client.onmessage = this.onmessage
             this.client.onopen = this.onopen
             this.client.onclose = this.onclose
