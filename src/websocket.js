@@ -1,10 +1,11 @@
-const ReconnectingWebSocket = require('reconnecting-websocket');
+const ReconnectingWebSocket = require('joewalnes/reconnecting-websocket');
 
 let webSocketOptions = {
-    reconnectInterval: 500,
-    timeoutInterval: 3000,
-    reconnectDecay: 1.1,
-    automaticOpen: false
+    maxReconnectionDelay: 2000,
+    minReconnectionDelay: 1000,
+    reconnectionDelayGrowFactor: 1,
+    connectionTimeout: 3000,
+    debug: true
 };
 
 (function () {
@@ -31,10 +32,8 @@ let webSocketOptions = {
                 _this.waitActionList.forEach(function (action) {
                     _this.send(action.route, action.data);
                 });
-                _this.waitActionList = [];
+                _this.waitActionList.splice(0, _this.waitActionList.length);
             }
-
-            console.log(_this)
 
             _this.eventsOnOpen.forEach(function (cbObj) {
                 const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
@@ -62,7 +61,6 @@ let webSocketOptions = {
         this.connect = function () {
 
             if (this.client && this.client.readyState < 2) {
-                console.log("Closing old connection");
                 this.close(true);
             }
 
@@ -142,7 +140,8 @@ let webSocketOptions = {
 
         this.close = function (keepClosed = false) {
             this.client.close(1000, '', { keepClosed: keepClosed, fastClose: true, delay: 0 });
-            this.waitActionList = [];
+            if (_this.isConnected)
+                this.waitActionList = [];
         };
 
         this.getClient = function () {

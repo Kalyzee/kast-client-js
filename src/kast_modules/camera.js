@@ -55,7 +55,12 @@ module.exports = function (socket) {
         Generator.createAction('get_room_list'),
         Generator.createAction('get_current_room'),
 
-        Generator.createAction('set_zone_preset')
+        Generator.createAction('set_zone_preset'),
+
+        Generator.createAction('set_white_balance_mode'),
+        Generator.createAction('one_push_white_balance'),
+
+        Generator.createAction('set_focus_auto'),
     ];
 
     var cameraModule = Generator.generate(socket, 'camera', this.events, this.actions);
