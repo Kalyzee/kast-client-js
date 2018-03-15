@@ -9,7 +9,7 @@ module.exports = function(socket) {
 
     this.actions = [
         Generator.createAction('switch_scene', ['scene_id']),
-
+        
         Generator.createAction('get_alpha_rgb'),
         Generator.createAction('set_alpha_rgb'),
         Generator.createAction('save_alpha_rgb'),

@@ -148,7 +148,6 @@ let webSocketOptions = {
             return this.client;
         };
 
-
         // Creating websocket automatically (TODO)
         this.connect()
     };
