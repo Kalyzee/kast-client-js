@@ -3,7 +3,7 @@ var Generator = require('../generator');
 module.exports = function(socket) {
 
     this.events = [
-        'copy_file',
+        'tmp_from_usb',
         'available', 'no_available',
         'download_start', 'download_progress', 'download_end', 'download_error',
         'update_start', 'update_progress', 'update_end', 'update_error',
@@ -12,7 +12,6 @@ module.exports = function(socket) {
 
     this.actions = [
         Generator.createAction('check'),
-        Generator.createAction('start'),
         Generator.createAction('from_usb'),
         Generator.createAction('from_repository'),
     ];
