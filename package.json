@@ -6,7 +6,7 @@
   "description": "Kast Websocket Client",
   "license": "MIT",
   "dependencies": {
-    "joewalnes/reconnecting-websocket": "git+https://github.com/chbdetta/reconnecting-websocket.git",
+    "reconnecting-websocket": "git+https://github.com/bvandenbos/reconnecting-websocket.git",
     "ws": "^3.1.0"
   }
 }

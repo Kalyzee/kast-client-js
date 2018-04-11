@@ -1,9 +1,9 @@
-const ReconnectingWebSocket = require('joewalnes/reconnecting-websocket');
+const ReconnectingWebSocket = require('reconnecting-websocket');
 
 let webSocketOptions = {
     maxReconnectionDelay: 2000,
     minReconnectionDelay: 1000,
-    reconnectionDelayGrowFactor: 1,
+    reconnectionDelayGrowFactor: 1.3,
     connectionTimeout: 3000,
     debug: true
 };
@@ -26,6 +26,7 @@ let webSocketOptions = {
             const jsdata = JSON.parse(event.data);
             _this.fireEvent(jsdata.action, jsdata.params);
         };
+
         this.onopen = function () {
             _this.isConnected = true
             if (_this.waitActionList.length > 0) {
@@ -40,6 +41,7 @@ let webSocketOptions = {
                 ctxCb();
             });
         };
+
         this.onclose = function () {
             if (_this.isConnected) {
                 _this.isConnected = false
@@ -51,12 +53,13 @@ let webSocketOptions = {
                 // connection attempt failed
             }
         };
+
         this.onerror = function (error) {
             _this.eventsOnError.forEach(function (cbObj) {
                 const ctxCb = cbObj.cb.bind(cbObj.ctx || _this);
                 ctxCb(error.message);
             });
-        }
+        };
 
         this.connect = function () {
 
@@ -70,7 +73,7 @@ let webSocketOptions = {
             this.client.onopen = this.onopen;
             this.client.onclose = this.onclose;
             this.client.onerror = this.onerror;
-        }
+        };
 
         this.fireEvent = function (eventName, params) {
             if (this.events[eventName]) {
@@ -125,17 +128,16 @@ let webSocketOptions = {
                 delete this.events[eventName][id_del];
         };
 
-
         this.send = function (route, data) {
-            if (this.client.readyState === 1) {
+            if (!this.client || this.client.readyState !== 1) {
+                this.waitActionList.push({ "route": route, "data": data });
+            } else {
                 if (typeof data !== 'undefined') {
                     this.client.send(JSON.stringify({ "action": route, "params": data }));
                 } else {
                     this.client.send(JSON.stringify({ "action": route }));
                 };
-            } else {
-                this.waitActionList.push({ "route": route, "data": data });
-            };
+            }
         };
 
         this.close = function (keepClosed = false) {
@@ -149,9 +151,8 @@ let webSocketOptions = {
         };
 
         // Creating websocket automatically (TODO)
-        this.connect()
+        this.connect();
     };
 
     module.exports.KastWebSocket = KastWebSocket;
-
 })();

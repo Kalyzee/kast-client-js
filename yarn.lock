@@ -6,9 +6,9 @@ async-limiter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
-"joewalnes/reconnecting-websocket@git+https://github.com/chbdetta/reconnecting-websocket.git":
+"reconnecting-websocket@git+https://github.com/bvandenbos/reconnecting-websocket.git":
   version "3.2.2"
-  resolved "git+https://github.com/chbdetta/reconnecting-websocket.git#302bcb694f41c21a55e967399a92d3a4689e27e3"
+  resolved "git+https://github.com/bvandenbos/reconnecting-websocket.git#31a0f01af4c96dfb1ba0c17b1124de204cd0e513"
 
 safe-buffer@~5.1.0:
   version "5.1.1"
