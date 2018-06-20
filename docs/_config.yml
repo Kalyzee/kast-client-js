@@ -2,7 +2,7 @@ title: Kast javascript client
 email: contact@kalyzee.com
 baseurl: "/kast-client-js" # the subpath of your site, e.g. /blog
 
-url: "https://kalyzee.github.io/"
+url: "https://kalyzee.github.io/kast-client-js/"
 
 twitter_username: kalyzee
 github_username:  kalyzee
@@ -32,7 +32,7 @@ doc:
         - title : 'Audio'
           url   : '#audio'
         - title : 'Background'
-          url   : '#background'
+            url   : '#background'
         - title : 'Logo'
           url   : '#logo'
         - title : 'Mixer'
