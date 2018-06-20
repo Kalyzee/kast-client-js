@@ -1,24 +1,7 @@
-*   ### [Kast Client](#kastClient)
-    *   [Installation](#installation)
-    *   [Usage](#usage)
-    *   [Anatomy of Kastbox](#anatomy)
-    *   [Schema](#schema)
-    *   [Example](#example)
-
-*   ### [Kast Modules](#kastModules)
-    *   [Camera](#camera)
-    *   [Audio](#audio)
-    *   [Video](#video)
-    *   [Background](#background)
-    *   [Logo](#logo)
-    *   [Mixer](#mixer)
-    *   [Network](#network)
-    *   [System](#system)
-    *   [Update](#update)
-    *   [USB Management](#usb)
-    *   [Context](#context)
-
-
+---
+layout: doc
+title: Kast Javascript Client 
+---
 
 # Kast Client<a id="kastClient"></a>
 
@@ -82,7 +65,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 **Example :**<a id="example"></a>
 
     let kast = new KastClient(`url`)
-    
+
     kast.camera.up() // Execute an action to direct your camera up
     kast.camera.down() // Execute an action to direct your camera down
 
@@ -100,7 +83,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 **This class is used to execute actions on the camera**
 
-| Function                                      |   Description                                                                               | 
+| Function                                      |   Description                                                                               |
 |-----------------------------------------------|---------------------------------------------------------------------------------------------|
 |`zoomIn()`                                     |Execute a zoom in
 |`zoomOut()`                                    |Execute a zoom out
@@ -142,7 +125,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Audio <a id="audio"></a>
 
-| Function                     | Description                                                                 | 
+| Function                     | Description                                                                 |
 |------------------------------|--------------------------------------------------------------------------------------------------|
 |`context()`                   |
 |`onContext()`                 |
@@ -151,7 +134,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Video <a id="video"></a>
 
-| Function                               | Description                                                                  | 
+| Function                               | Description                                                                  |
 |----------------------------------------|  ------------------------------------------------------------------------------|
 |`getList()`                             |
 |`onGetList(`*callback(Object list*`)`   |
@@ -165,7 +148,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Background <a id="background"></a>
 
-| Function                 | Description                                                                  | 
+| Function                 | Description                                                                  |
 |--------------------------|------------------------------------------------------------------------------|
 |`get()`                   |
 |`getCurrent()`            |
@@ -174,7 +157,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Logo <a id="logo"></a>
 
-| Function                                          | Description                                                                  | 
+| Function                                          | Description                                                                  |
 |---------------------------------------------------|------------------------------------------------------------------------------|
 |`get()`               |-           |             |
 |`getCurrent()`        |-           |             |
@@ -186,7 +169,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Mixer <a id="mixer"></a>
 
-| Function                                          | Description                                                                  | 
+| Function                                          | Description                                                                  |
 |---------------------------------------------------|------------------------------------------------------------------------------|
 |`switchScene(`*int scene_id*`)`                    |
 |`setAlphaRGB(`*int r, int g, int b*`)`             |                
@@ -201,7 +184,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Network <a id="network"></a>
 
-| Function          | Description                                                                  | 
+| Function          | Description                                                                  |
 |-------------------|------------------------------------------------------------------------------|
 |`getInfo()`        |
 |`setInfo()`        |
@@ -209,8 +192,8 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 |`onUpdated()`      |
 
 ## System <a id="system"></a>
- 
-| Function             | Description                                                                  | 
+
+| Function             | Description                                                                  |
 |----------------------|------------------------------------------------------------------------------|
 |`onLongProcess()`     |
 |`onLongProcessEnd()`  |
@@ -219,7 +202,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Update <a id="update"></a>
 
-| Function               | Description                                                                  | 
+| Function               | Description                                                                  |
 |------------------------|------------------------------------------------------------------------------|
 |`check()`               |
 |`onCheckUpdate()`       |
@@ -229,7 +212,7 @@ To start using **KastClient** and all modules it offers, you have to instanciate
 
 ## Usb Management <a id="usb"></a>
 
-| Function             | Description                                                                  | 
+| Function             | Description                                                                  |
 |----------------------|------------------------------------------------------------------------------|
 |`deviceList()`        |
 |`deviceDirList()`     |

@@ -1,1 +1,49 @@
-theme: jekyll-theme-cayman
+title: Kast javascript client
+email: contact@kalyzee.com
+baseurl: "/kast-client-js" # the subpath of your site, e.g. /blog
+
+url: "https://kalyzee.github.io/"
+
+twitter_username: kalyzee
+github_username:  kalyzee
+
+# Build settings
+markdown: kramdown
+remote_theme: kalyzee/jekyll-theme
+
+doc:
+  categories:
+    - title: Kast Client
+      items:
+        - title : 'Installation'
+          url   : '#installation'
+        - title : 'Usage'
+          url   : '#usage'
+        - title : 'Anatomy of Kastbox'
+          url   : '#anatomy'
+        - title : 'Schema'
+          url   : '#schema'
+        - title : 'Example'
+          url   : '#example'
+    - title: Kast Modules
+      items:
+        - title : 'Camera'
+          url   : '#camera'
+        - title : 'Audio'
+          url   : '#audio'
+        - title : 'Background'
+          url   : '#background'
+        - title : 'Logo'
+          url   : '#logo'
+        - title : 'Mixer'
+          url   : '#mixer'
+        - title : 'Network'
+          url   : '#network'
+        - title : 'System'
+          url   : '#system'
+        - title : 'Update'
+          url   : '#update'
+        - title : 'USB Management'
+          url   : '#usb'
+        - title : 'Context'
+          url   : '#context'
