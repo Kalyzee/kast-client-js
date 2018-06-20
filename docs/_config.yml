@@ -32,7 +32,7 @@ doc:
         - title : 'Audio'
           url   : '#audio'
         - title : 'Background'
-            url   : '#background'
+          url   : '#background'
         - title : 'Logo'
           url   : '#logo'
         - title : 'Mixer'
