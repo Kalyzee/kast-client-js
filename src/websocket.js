@@ -5,7 +5,7 @@ let webSocketOptions = {
     minReconnectionDelay: 1000,
     reconnectionDelayGrowFactor: 1.3,
     connectionTimeout: 3000,
-    debug: true
+    debug: false
 };
 
 (function () {

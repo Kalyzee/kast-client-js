@@ -4,7 +4,9 @@ var Constants = require('../constants');
 module.exports = function (socket) {
 
     this.events = [
-        'set_room', 'get_room_list', 'get_current_room'
+        'set_room', 'get_room_list', 'get_current_room',
+        'list_white_balance_modes', 'get_white_balance_mode',
+        'get_focus_auto', 'get_focus'
     ];
 
     this.actions = [
@@ -55,12 +57,20 @@ module.exports = function (socket) {
         Generator.createAction('get_room_list'),
         Generator.createAction('get_current_room'),
 
-        Generator.createAction('set_zone_preset'),
+        // Focus
+        Generator.createAction('focus_far'),
+        Generator.createAction('focus_near'),
+        Generator.createAction('focus_stop'),
+        Generator.createAction('set_focus'),
+        Generator.createAction('get_focus'),
+        Generator.createAction('set_focus_auto'),
+        Generator.createAction('get_focus_auto'),
 
+        // White balance
         Generator.createAction('set_white_balance_mode'),
         Generator.createAction('one_push_white_balance'),
-
-        Generator.createAction('set_focus_auto'),
+        Generator.createAction('get_white_balance_mode'),
+        Generator.createAction('list_white_balance_modes'),
     ];
 
     var cameraModule = Generator.generate(socket, 'camera', this.events, this.actions);

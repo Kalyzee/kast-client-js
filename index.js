@@ -14,6 +14,7 @@ let Update = require('./src/kast_modules/update');
 let Context = require('./src/kast_modules/context');
 let System = require('./src/kast_modules/system');
 let Connection = require('./src/kast_modules/connection');
+let Webkit = require('./src/kast_modules/webkit');
 
 module.exports = function (url, websocket) {
 
@@ -33,4 +34,5 @@ module.exports = function (url, websocket) {
     this.context = new Context(this.socket);
     this.system = new System(this.socket);
     this.connection = new Connection(this.socket);
+    this.webkit = new Webkit(this.socket);
 };
