@@ -6,7 +6,8 @@ module.exports = function(socket) {
         'enable', 'disable',
         'message_add', 'message_add_many', 'message_remove',
         'messages_list_get',
-        'twitter_get_query'
+        'twitter_get_query',
+        'twitter_get_overlay_visibility'
     ];
 
     this.actions = [
@@ -18,6 +19,8 @@ module.exports = function(socket) {
         Generator.createAction('messages_list_get'),
         Generator.createAction('twitter_get_query'),
         Generator.createAction('twitter_set_query'),
+        Generator.createAction('twitter_set_overlay_visibility'),
+        Generator.createAction('twitter_get_overlay_visibility'),
     ];
 
     return Generator.generate(socket, 'webkit', this.events, this.actions);
