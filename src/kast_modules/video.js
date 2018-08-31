@@ -18,6 +18,7 @@ module.exports = function(socket) {
         Generator.createAction('set_session_title'),
         Generator.createAction('set_session_speaker'),
         Generator.createAction('usb_copy'),
+        Generator.createAction('connector_copy'),
         Generator.createAction('dev/get_live_error'),
     ];
 

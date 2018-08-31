@@ -3,7 +3,7 @@ var Generator = require('../generator');
 module.exports = function(socket) {
 
     this.events = [
-        'notification_success', 'notification_error',
+        'notification_success', 'notification_error',, 'notification_alert',
         'long_process', 'long_process_ended',
         'success', 'error', 'free_space', 'about'
     ];
