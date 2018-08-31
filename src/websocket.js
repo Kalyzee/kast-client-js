@@ -3,8 +3,8 @@ const ReconnectingWebSocket = require('reconnecting-websocket');
 let webSocketOptions = {
     maxReconnectionDelay: 2000,
     minReconnectionDelay: 1000,
-    reconnectionDelayGrowFactor: 1.3,
-    connectionTimeout: 3000,
+    reconnectionDelayGrowFactor: 1,
+    connectionTimeout: 1000,
     debug: false
 };
 
