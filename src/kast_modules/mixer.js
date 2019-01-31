@@ -4,7 +4,7 @@ var Constants = require('../constants');
 module.exports = function(socket) {
 
     this.events = [
-        'get_alpha_rgb', 'get_alpha_angle', 'get_alpha_bw', 'get_watermark_enabled'
+        'get_alpha_rgb', 'get_alpha_angle', 'get_alpha_bw', 'get_watermark_enabled', 'get_display_output'
     ];
 
     this.actions = [
@@ -23,7 +23,10 @@ module.exports = function(socket) {
         Generator.createAction('save_alpha_bw'),
 
         Generator.createAction('set_watermark_enabled'),
-        Generator.createAction('get_watermark_enabled')
+        Generator.createAction('get_watermark_enabled'),
+        
+        Generator.createAction('set_display_output'),
+        Generator.createAction('get_display_output')
     ];
 
     var MixerModule = Generator.generate(socket, 'mixer', this.events, this.actions);
