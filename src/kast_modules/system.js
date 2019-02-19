@@ -12,7 +12,8 @@ module.exports = function(socket) {
         Generator.createAction('get_free_space'),
         Generator.createAction('shutdown'),
         Generator.createAction('reboot'),
-        Generator.createAction('about')
+        Generator.createAction('about'),
+        Generator.createAction('set_time')
     ];
 
     return Generator.generate(socket, 'system', this.events, this.actions);

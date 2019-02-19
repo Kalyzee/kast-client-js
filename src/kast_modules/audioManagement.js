@@ -13,7 +13,9 @@ module.exports = function(socket) {
         Generator.createAction('boost_up'),
         Generator.createAction('boost_down'),
         Generator.createAction('set_source'),
-        Generator.createAction('toggle_mute')
+        Generator.createAction('toggle_mute'),
+        Generator.createAction('set_volume'),
+        Generator.createAction('save_volume'),
     ];
 
     return Generator.generate(socket, 'audio', this.events, this.actions);
