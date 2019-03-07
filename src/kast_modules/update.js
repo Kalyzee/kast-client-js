@@ -5,6 +5,7 @@ module.exports = function(socket) {
     this.events = [
         'tmp_from_usb',
         'available', 'no_available',
+        'update_copy_start', 'update_copy_progress', 'update_copy_end', 'update_copy_error',
         'download_start', 'download_progress', 'download_end', 'download_error',
         'update_start', 'update_progress', 'update_end', 'update_error',
 

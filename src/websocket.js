@@ -4,7 +4,7 @@ let webSocketOptions = {
     maxReconnectionDelay: 2000,
     minReconnectionDelay: 1000,
     reconnectionDelayGrowFactor: 1,
-    connectionTimeout: 1000,
+    connectionTimeout: 2000,
     debug: false
 };
 
@@ -62,7 +62,9 @@ let webSocketOptions = {
         };
 
         this.connect = function () {
-
+            if (this.client)
+                console.log(this.client.readyState);
+            
             if (this.client && this.client.readyState < 2) {
                 this.close(true);
             }
