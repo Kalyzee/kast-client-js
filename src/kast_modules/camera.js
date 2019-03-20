@@ -47,6 +47,7 @@ module.exports = function (socket) {
         Generator.createAction('mouse_position'),
         Generator.createAction('mouse_up'),
         Generator.createAction('end_setting_tracking_zone'),
+	    Generator.createAction('set_zone_preset'),
 
         Generator.createAction('start_track'),
         Generator.createAction('stop_track'),
