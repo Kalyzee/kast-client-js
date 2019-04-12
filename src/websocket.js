@@ -62,14 +62,12 @@ let webSocketOptions = {
         };
 
         this.connect = function () {
-            if (this.client)
-                console.log(this.client.readyState);
-            
+
             if (this.client && this.client.readyState < 2) {
                 this.close(true);
             }
 
-            this.client = new ReconnectingWebSocket(url, null, webSocketOptions);
+            this.client = new ReconnectingWebSocket(url, [], webSocketOptions);
             this.isConnected = false;
             this.client.onmessage = this.onmessage;
             this.client.onopen = this.onopen;
