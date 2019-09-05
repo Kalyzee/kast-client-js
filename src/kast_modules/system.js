@@ -13,7 +13,8 @@ module.exports = function(socket) {
         Generator.createAction('shutdown'),
         Generator.createAction('reboot'),
         Generator.createAction('about'),
-        Generator.createAction('set_time')
+        Generator.createAction('set_time'),
+        Generator.createAction('factory_reset')
     ];
 
     return Generator.generate(socket, 'system', this.events, this.actions);
