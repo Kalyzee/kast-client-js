@@ -6,7 +6,7 @@ title: Kast Javascript Client
 # Kast Client<a id="kastClient"></a>
 
 This client allows you to communicate with KastBox with Websocket Mode and with
-HTTP WS Mode (comming soon).
+HTTP WS Mode (coming soon).
 
 ## Installation<a id="installation"></a>
 
