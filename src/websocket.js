@@ -62,7 +62,6 @@ let webSocketOptions = {
         };
 
         this.connect = function () {
-
             if (this.client && this.client.readyState < 2) {
                 this.close(true);
             }

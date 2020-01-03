@@ -20,6 +20,7 @@ module.exports = function(socket) {
         Generator.createAction('usb_copy'),
         Generator.createAction('connector_copy'),
         Generator.createAction('dev/get_live_error'),
+        Generator.createAction('save_record'),
     ];
 
     return Generator.generate(socket, 'video', this.events, this.actions);
