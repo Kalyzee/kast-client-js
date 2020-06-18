@@ -5,16 +5,10 @@ HTTP WS Mode (coming soon).
 
 ## Installation
 
-### Using bower
-
-```bash
-  bower install kast-client
-```
-
 ### Using npm
 
 ```bash
-  npm install kast-client
+  npm install https://github.com/Kalyzee/kast-client-js
 ```
 
 ## Usage
