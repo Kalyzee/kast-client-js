@@ -72,6 +72,9 @@ module.exports = function (socket) {
         Generator.createAction('one_push_white_balance'),
         Generator.createAction('get_white_balance_mode'),
         Generator.createAction('list_white_balance_modes'),
+
+        Generator.createAction('flip'),
+
     ];
 
     var cameraModule = Generator.generate(socket, 'camera', this.events, this.actions);
