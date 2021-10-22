@@ -5,7 +5,9 @@ module.exports = function(socket) {
     this.events = [
         'list',
         'current_session',
-        'live_error'
+        'live_error',
+        'sdp_offer',
+        'ice_candidate'
     ];
 
     this.actions = [
@@ -21,6 +23,10 @@ module.exports = function(socket) {
         Generator.createAction('connector_copy'),
         Generator.createAction('dev/get_live_error'),
         Generator.createAction('save_record'),
+        Generator.createAction('start_preview'),
+        Generator.createAction('send_sdp_answer'),
+        Generator.createAction('send_ice_candidate'),
+        Generator.createAction('stop_preview')
     ];
 
     return Generator.generate(socket, 'video', this.events, this.actions);
