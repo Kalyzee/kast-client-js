@@ -6,7 +6,8 @@ module.exports = function (socket) {
     this.events = [
         'set_room', 'get_room_list', 'get_current_room',
         'list_white_balance_modes', 'get_white_balance_mode',
-        'get_focus_auto', 'get_focus'
+        'get_focus_auto', 'get_focus',
+        'get_exposure_mode'
     ];
 
     this.actions = [
@@ -66,12 +67,29 @@ module.exports = function (socket) {
         Generator.createAction('get_focus'),
         Generator.createAction('set_focus_auto'),
         Generator.createAction('get_focus_auto'),
+        Generator.createAction('set_one_push_focus'),
 
         // White balance
         Generator.createAction('set_white_balance_mode'),
         Generator.createAction('one_push_white_balance'),
         Generator.createAction('get_white_balance_mode'),
         Generator.createAction('list_white_balance_modes'),
+
+        // Exposure
+        Generator.createAction('set_exposure_mode'),
+        Generator.createAction('get_exposure_mode'),
+
+        // Iris
+        Generator.createAction('set_iris_up'),
+        Generator.createAction('set_iris_down'),
+
+        // Shutter
+        Generator.createAction('set_shutter_up'),
+        Generator.createAction('set_shutter_down'),
+
+        // Gain
+        Generator.createAction('set_gain_up'),
+        Generator.createAction('set_gain_down'),
 
         Generator.createAction('flip'),
 
